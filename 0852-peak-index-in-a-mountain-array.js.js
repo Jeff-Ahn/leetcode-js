@@ -11,9 +11,10 @@
 // Given an integer array arr that is guaranteed to be a mountain, return any i such that arr[0] < arr[1] < ... arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1].
 
 /* Constraints */
-// 3 <= arr.length <= 104
-// 0 <= arr[i] <= 106
+// 3 <= arr.length <= 10^4
+// 0 <= arr[i] <= 10^6
 // arr is guaranteed to be a mountain array.
+
 /**
  * @param {number[]} arr
  * @return {number}
