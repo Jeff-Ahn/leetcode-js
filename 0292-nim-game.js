@@ -1,4 +1,4 @@
-// 241. 292. Nim Game
+// 292. Nim Game
 // Difficulty: Easy
 
 /* Description */
