@@ -79,3 +79,42 @@ var removeStones = function (stones) {
 
   return stones.length - subsetCount;
 };
+
+/**
+ * @param {number[][]} stones
+ * @return {number}
+ */
+var removeStones = function (stones) {
+  const n = stones.length;
+  const parent = Array.from({ length: n }, (_, idx) => idx);
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = i + 1; j < n; j++) {
+      if (stones[i][0] === stones[j][0] || stones[i][1] === stones[j][1]) {
+        union(parent, i, j);
+      }
+    }
+  }
+
+  return n - new Set(parent).size;
+};
+
+const findParent = (parent, x) => {
+  while (parent[x] !== x) {
+    x = parent[x];
+  }
+  return x;
+};
+
+const union = (parent, a, b) => {
+  const parentA = findParent(parent, a);
+  const parentB = findParent(parent, b);
+  const changeable = [];
+  if (parentA > parentB) {
+    parent.forEach((p, idx) => p === parent[a] && changeable.push(idx));
+    changeable.forEach((idx) => (parent[idx] = parentB));
+  } else {
+    parent.forEach((p, idx) => p === parent[b] && changeable.push(idx));
+    changeable.forEach((idx) => (parent[idx] = parentA));
+  }
+};
